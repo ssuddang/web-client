@@ -1,14 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import Header from '@/components/MainPage/Header';
+import { useState } from 'react';
 
-function HomePage() {
+function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const slides = [
-    "/image1.jpg", // 이미지 경로 예시
-    "/image2.jpg",
-    "/image3.jpg",
-    "/image4.jpg",
+    '/image1.jpg', // 이미지 경로 예시
+    '/image2.jpg',
+    '/image3.jpg',
+    '/image4.jpg',
   ];
 
   const nextSlide = () => {
@@ -21,31 +22,7 @@ function HomePage() {
 
   return (
     <div>
-      {/* 헤더 */}
-      <header className="fixed top-0 left-0 w-full h-24 bg-white shadow-md z-50">
-        <div className="flex justify-between items-center h-full px-8">
-          <div className="text-xl font-bold">Logo</div>
-          <nav>
-            <ul className="flex space-x-8">
-              <li>
-                <a href="contact" className="hover:text-red-500">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-red-500">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-red-500">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* 슬라이드 */}
       <main className="mt-24">
@@ -55,7 +32,7 @@ function HomePage() {
               <div
                 key={index}
                 className={`${
-                  index === activeSlide ? "opacity-100" : "opacity-0"
+                  index === activeSlide ? 'opacity-100' : 'opacity-0'
                 } transition-opacity duration-500 absolute top-0 left-0 w-full h-full`}
               >
                 <img src={slide} alt={`Slide ${index}`} className="w-full" />
@@ -80,7 +57,7 @@ function HomePage() {
                 <button
                   onClick={() => setActiveSlide(index)}
                   className={`w-4 h-4 rounded-full ${
-                    index === activeSlide ? "bg-gray-800" : "bg-gray-400"
+                    index === activeSlide ? 'bg-gray-800' : 'bg-gray-400'
                   }`}
                 ></button>
               </li>
@@ -132,4 +109,4 @@ function HomePage() {
     </div>
   );
 }
-export default HomePage
+export default Home;

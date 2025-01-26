@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 function Slide() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false); // 자동 슬라이드 일시정지 상태 추가
+  const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
     '/slide-image/image1.jpg',
@@ -14,13 +14,12 @@ function Slide() {
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
-
   const prevSlide = () => {
     setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   useEffect(() => {
-    if (isPaused) return; // 일시정지 시 타이머 비활성화
+    if (isPaused) return;
     const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
   }, [isPaused]);
@@ -28,13 +27,11 @@ function Slide() {
   return (
     <main className="flex items-center justify-center">
       <div className="max-w-5xl mx-auto">
-        {/* 슬라이드 컨테이너 */}
         <div
           className="relative flex items-center justify-center mt-[20px] w-[900px] h-[400px] bg-white rounded-md overflow-hidden"
-          onMouseEnter={() => setIsPaused(true)} // 마우스 올리면 일시정지
-          onMouseLeave={() => setIsPaused(false)} // 마우스 나가면 재생
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {/* 슬라이드 이미지 */}
           <div className="w-[600px] h-full relative">
             {slides.map((slide, index) => (
               <div
@@ -52,7 +49,6 @@ function Slide() {
             ))}
           </div>
 
-          {/* 이전 슬라이드 버튼 */}
           <button
             onClick={prevSlide}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white rounded-full p-3 z-10"
@@ -60,8 +56,6 @@ function Slide() {
           >
             &lt;
           </button>
-
-          {/* 다음 슬라이드 버튼 */}
           <button
             onClick={nextSlide}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white rounded-full p-3"
@@ -71,7 +65,6 @@ function Slide() {
           </button>
         </div>
 
-        {/* 슬라이드 인덱스 선택 버튼 */}
         <ul className="flex justify-center space-x-2 mt-[20px] mb-[20px]">
           {slides.map((_, index) => (
             <li key={index}>

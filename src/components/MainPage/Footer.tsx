@@ -1,40 +1,40 @@
 function Footer() {
   return (
-    <footer className="bg-green-700 text-white">
-      <div>
-        <div className="flex justify-center space-x-8 pt-6">
-          <a href="#" className="bg-white text-black p-3 rounded-full">
-            <i className="fab fa-facebook"></i>
-          </a>
-          <a href="#" className="bg-white text-black p-3 rounded-full">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="#" className="bg-white text-black p-3 rounded-full">
-            <i className="fab fa-instagram"></i>
-          </a>
+    <footer className="bg-green-700 text-white flex flex-col">
+      <div className="flex items-center justify-between w-[1150px] mx-auto mt-[40px] mb-[10px]">
+        <div className="text-[13px] font-thin">
+          Copyright ⓒ SSUDDANG All Rights Reserved.
         </div>
-        <nav className="">
-          <ul className="flex justify-center space-x-4 pt-6 pb-5">
-            <li>
-              <a href="#" className="hover:opacity-100 opacity-70">
-                Terms
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:opacity-100 opacity-70">
-                Privacy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:opacity-100 opacity-70">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <a href="https://www.instagram.com/ssu_ddang4/" className="w-7 h-7">
+          <img src="/icon/icon-instagram.png" />
+        </a>
       </div>
-      <div className="bg-green-800 text-center py-4">
-        <p className="text-sm">&copy; 2025 SSUDDANG. All rights reserved.</p>
+      <hr className="flex items-center justify-between w-[1150px] mx-auto" />
+      <div className="text-[13px] font-thin">
+        <div className="flex justify-between mx-auto w-[1150px] mt-[20px] mb-[20px]">
+          <div>
+            <div className="text-[15px] font-extrabold mb-[5px]">
+              땅의사람들
+            </div>
+            <div>2025 Ver. Created by 박성욱, Lil Seoul</div>
+          </div>
+
+          <div>
+            <div className="text-[15px] font-extrabold">회장</div>
+            <div>정휘도 010-0000-0000</div>
+          </div>
+        </div>
+        <div className="flex items-end justify-between mx-auto w-[1150px] mb-[30px]">
+          <div>서울특별시 동작구 상도로 369, 숭실대학교 학생회관 232호</div>
+          <div>
+            <div className="text-[15px] font-extrabold">부회장</div>
+            <div>
+              김민석 010-0000-0000
+              <br />
+              전상하 010-0000-0000
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

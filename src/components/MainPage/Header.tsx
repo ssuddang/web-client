@@ -2,6 +2,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+
 
 const Header: React.FC = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -56,72 +58,78 @@ const Header: React.FC = () => {
           <img src="/logo.png" alt="Logo" className="h-10" />
         </div>
 
-        {/* PC GNB */}
-        <nav className="hidden md:block">
-  <ul className="header-gnb flex space-x-8">
-    {[
-      {
-        menu: "About Us",
-        submenus: ["동아리 소개", "조직", "CI", "Contact"],
-      },
-      {
-        menu: "커뮤니티",
-        submenus: ["공지사항", "캘린더", "주요 활동"],
-      },
-      {
-        menu: "지원하기",
-        submenus: ["지원하기"],
-      },
-    ].map((menuData, index) => (
-      <li
-        key={index}
-        className="relative"
-        onMouseEnter={() => {
-          handleMouseEnter(index);
-          setHeaderDropdown(true); // 헤더 드롭다운 활성화
-        }}
-        onMouseLeave={() => {
-          handleMouseLeave();
-          setHeaderDropdown(false); // 헤더 드롭다운 비활성화
-        }}
-      >
-        <a
-          href="#"
-          className={`depth-1-link flex items-center h-[90px] px-4 font-bold text-lg relative ${
-            openMenuIndex === index ? "text-black" : "text-gray-800"
-          }`}
-        >
-          {menuData.menu}
-          {/* 밑줄 효과 */}
-          <span
-            className={`absolute left-0 bottom-0 h-1 bg-[#266900] transition-all duration-300 ${
-              openMenuIndex === index ? "w-full" : "w-0"
-            }`}
-          />
-        </a>
-        <div
-          className={`depth-item absolute top-full left-0 w-full overflow-hidden transition-all duration-300 ${
-            openMenuIndex === index ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <ul className="gnb-depth-2 py-2">
-            {menuData.submenus.map((submenu, subIndex) => (
-              <li key={subIndex}>
-                <a
-                  href="#"
-                  className="depth-2-link block px-4 py-2 text-gray-300 hover:text-[#E6AFAF]"
+       {/* PC GNB */}
+       <nav className="hidden md:block">
+          <ul className="header-gnb flex space-x-8">
+            {[
+              {
+                menu: "About Us",
+                submenus: [
+                  { name: "동아리 소개", link: "/about" },
+                  { name: "조직", link: "/team" },
+                  { name: "CI", link: "/ci" },
+                  { name: "Contact", link: "/contact" },
+                ],
+              },
+              {
+                menu: "커뮤니티",
+                submenus: [
+                  { name: "공지사항", link: "/notice" },
+                  { name: "캘린더", link: "/calendar" },
+                  { name: "주요 활동", link: "/activities" },
+                ],
+              },
+              {
+                menu: "지원하기",
+                submenus: [{ name: "지원하기", link: "/apply" }],
+              },
+            ].map((menuData, index) => (
+              <li
+                key={index}
+                className="relative"
+                onMouseEnter={() => {
+                  handleMouseEnter(index);
+                  setHeaderDropdown(true); // 헤더 드롭다운 활성화
+                }}
+                onMouseLeave={() => {
+                  handleMouseLeave();
+                  setHeaderDropdown(false); // 헤더 드롭다운 비활성화
+                }}
+              >
+                {/* Depth-1 메뉴 */}
+                <button className="depth-1-link flex items-center h-[90px] px-4 font-bold text-lg relative">
+                  {menuData.menu}
+                  {/* 밑줄 효과 */}
+                  <span
+                    className={`absolute left-0 bottom-0 h-1 bg-[#266900] transition-all duration-300 ${
+                      openMenuIndex === index ? "w-full" : "w-0"
+                    }`}
+                  />
+                </button>
+
+                {/* 서브메뉴 */}
+                <div
+                  className={`depth-item absolute top-full left-0 w-full overflow-hidden transition-all duration-300 ${
+                    openMenuIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
                 >
-                  {submenu}
-                </a>
+                  <ul className="gnb-depth-2 py-2 bg-transparent shadow-lg">
+                    {menuData.submenus.map((submenu, subIndex) => (
+                      <li key={subIndex}>
+                        <Link
+                          href={submenu.link}
+                          className="depth-2-link block px-4 py-2 text-gray-800 hover:text-[#E6AFAF] hover:bg-gray-100"
+                        >
+                          {submenu.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
             ))}
           </ul>
-        </div>
-      </li>
-    ))}
-  </ul>
-</nav>
-
+        </nav>
 
 
         {/* 모바일 GNB 버튼 */}

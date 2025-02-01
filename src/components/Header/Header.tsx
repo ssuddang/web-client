@@ -44,7 +44,7 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 w-full z-50 border-b border-[#41ad02] transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-50 border-b border-[#41ad02] transition-all duration-500 text-black ${
         isMobileOpen
           ? 'bg-gray-100'
           : isHeaderDropdownOpen

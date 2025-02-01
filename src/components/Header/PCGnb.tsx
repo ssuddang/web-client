@@ -9,7 +9,7 @@ interface PCGnbProps {
 function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
   return (
     <nav className="hidden md:block">
-      <ul className="header-gnb flex space-x-8">
+      <ul className="header-gnb flex space-x-8 text-black">
         {MENU_DATA.map((menuData, index) => (
           <li
             key={index}

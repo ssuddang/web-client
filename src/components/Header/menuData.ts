@@ -18,7 +18,7 @@ const MENU_DATA = [
   },
   {
     menu: '지원하기',
-    submenus: [{ name: '지원하기', link: '/apply' }],
+    submenus: [{ name: '지원하기', link: '/join' }],
   },
 ];
 

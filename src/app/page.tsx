@@ -1,8 +1,8 @@
 'use client';
 
-import Header from '@/components/MainPage/Header';
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
 import Slide from '@/components/MainPage/Slide';
-import Footer from '@/components/MainPage/Footer';
 
 function Home() {
   return (

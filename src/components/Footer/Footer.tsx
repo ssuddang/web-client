@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="bg-green-700 text-white flex flex-col">
-      <div className="flex items-center justify-between w-[1150px] mx-auto mt-[40px] mb-[10px]">
+      <div className="flex items-center justify-between w-full px-[130px] mx-auto mt-[40px] mb-[10px]">
         <div className="text-[13px] font-thin">
           Copyright ⓒ SSUDDANG All Rights Reserved.
         </div>
@@ -9,9 +9,11 @@ function Footer() {
           <img src="/icon/icon-instagram.png" />
         </a>
       </div>
-      <hr className="flex items-center justify-between w-[1150px] mx-auto" />
+      <div className="w-full px-[130px]">
+        <hr className="w-full border-t border-white" />
+      </div>
       <div className="text-[13px] font-thin">
-        <div className="flex justify-between mx-auto w-[1150px] mt-[20px] mb-[20px]">
+        <div className="flex justify-between mx-auto w-full px-[130px] mt-[20px] mb-[20px]">
           <div>
             <div className="text-[15px] font-extrabold mb-[5px]">
               땅의사람들
@@ -24,7 +26,7 @@ function Footer() {
             <div>정휘도 010-0000-0000</div>
           </div>
         </div>
-        <div className="flex items-end justify-between mx-auto w-[1150px] mb-[30px]">
+        <div className="flex items-end justify-between mx-auto w-full px-[130px] mb-[30px]">
           <div>서울특별시 동작구 상도로 369, 숭실대학교 학생회관 232호</div>
           <div>
             <div className="text-[15px] font-extrabold">부회장</div>

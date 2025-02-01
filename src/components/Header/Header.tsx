@@ -44,7 +44,7 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 w-full z-50 border-b border-[#41ad02] transition-all duration-500 text-black ${
+      className={`w-full fixed top-0 left-0 z-50 border-b border-[#41ad02] transition-all duration-500 text-black ${
         isMobileOpen
           ? 'bg-gray-100'
           : isHeaderDropdownOpen
@@ -52,8 +52,8 @@ function Header() {
             : 'bg-[#ffffff] h-[90px]'
       }`}
     >
-      <div className="header-inner flex justify-between items-center h-[90px] px-6 md:px-12">
-        <button className="text-red-500 font-bold text-[22px]">
+      <div className="w-full px-[130px] header-inner flex justify-between items-center h-[90px]">
+        <button className="text-black font-bold text-[22px]">
           <Link href={'/'}>땅의사람들</Link>
         </button>
         <PCGnb

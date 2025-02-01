@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import PCGnb from './PCGnb';
 import MobileGnb from './MobileGnb';
 import MobileToggleButton from './MobileToggleButton';
+import Link from 'next/link';
 
 function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -53,9 +53,9 @@ function Header() {
       }`}
     >
       <div className="header-inner flex justify-between items-center h-[90px] px-6 md:px-12">
-        <div className="header-logo">
-          <Image src="/logo.png" alt="Logo" width={100} height={40} priority />
-        </div>
+        <button className="text-red-500 font-bold text-[22px]">
+          <Link href={'/'}>땅의사람들</Link>
+        </button>
         <PCGnb
           openMenuIndex={openMenuIndex}
           setOpenMenuIndex={setOpenMenuIndex}

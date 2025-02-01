@@ -18,7 +18,7 @@ function MobileGnb({
     <div
       className={`mobile-gnb fixed top-[90px] left-0 w-full h-[calc(100vh-90px)] bg-white transform transition-transform duration-500 ${
         isMobileOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}
+      } text-black`}
     >
       <ul className="gnb-depth-1">
         {MENU_DATA.map((menuData, index) => (

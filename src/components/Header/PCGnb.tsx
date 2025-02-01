@@ -9,7 +9,7 @@ interface PCGnbProps {
 function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
   return (
     <nav className="hidden md:block">
-      <ul className="header-gnb flex space-x-8">
+      <ul className="header-gnb flex space-x-8 text-black">
         {MENU_DATA.map((menuData, index) => (
           <li
             key={index}
@@ -17,7 +17,7 @@ function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
             onMouseEnter={() => setOpenMenuIndex(index)}
             onMouseLeave={() => setOpenMenuIndex(null)}
           >
-            <button className="depth-1-link flex items-center h-[90px] px-4 font-bold text-lg relative">
+            <button className="depth-1-link flex items-center justify-center h-[90px] px-4 font-bold text-lg relative">
               {menuData.menu}
               <span
                 className={`absolute left-0 bottom-0 h-1 bg-[#266900] transition-all duration-300 ${
@@ -35,7 +35,7 @@ function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
                   <li key={subIndex}>
                     <Link
                       href={submenu.link}
-                      className="depth-2-link block px-4 py-2 text-gray-800 hover:text-[#E6AFAF] hover:bg-gray-100"
+                      className="depth-2-link block px-2 py-2 text-gray-800 hover:text-white"
                     >
                       {submenu.name}
                     </Link>

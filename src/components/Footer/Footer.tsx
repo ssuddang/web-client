@@ -18,7 +18,7 @@ function Footer() {
             <div className="text-[15px] font-extrabold mb-[5px]">
               땅의사람들
             </div>
-            <div>2025 Ver. Created by 박성욱, Lil Seoul</div>
+            <div>2025 Ver. Created by 박성욱, 정휘도</div>
           </div>
 
           <div>

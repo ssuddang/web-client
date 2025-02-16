@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 function Slide() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
     '/slide-image/image1.jpg',
@@ -14,64 +13,57 @@ function Slide() {
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
-  const prevSlide = () => {
-    setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, []);
 
   return (
-    <main className="flex items-center justify-center">
-      <div className="max-w-5xl mx-auto">
-        <div
-          className="relative flex items-center justify-center mt-[20px] w-[900px] h-[400px] bg-white rounded-md overflow-hidden"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="w-[600px] h-full relative">
-            {slides.map((slide, index) => (
-              <div
-                key={index}
-                className={`${
-                  index === activeSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                } transition-opacity duration-500 absolute top-0 left-0 w-full h-full`}
-              >
-                <img
-                  src={slide}
-                  alt={`Slide ${index}`}
-                  className="w-full h-full object-cover"
-                />
+    <main className="relative flex items-center justify-center">
+      <div
+        className="relative w-screen min-h-[calc(100vh-90px)] overflow-hidden flex flex-col justify-end"
+        style={{ height: 'calc(100vh - 90px)' }}
+      >
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute top-0 left-0 w-full h-full transition-opacity duration-2000 ease-in-out ${
+              index === activeSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+            style={{ transition: 'opacity 2s ease-in-out' }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-2000"></div>
+
+            <img
+              src={slide}
+              alt={`Slide ${index}`}
+              className="w-full h-full object-cover"
+            />
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <div className="text-white text-[55px] font-extrabold">
+                Soongsil University
               </div>
-            ))}
+              <div className="text-white text-[55px] font-extrabold">
+                People of the Land
+              </div>
+              <div className="text-white text-[20px] font-medium mt-[20px]">
+                숭실대학교 중앙 농촌활동 동아리 땅의사람들
+              </div>
+            </div>
           </div>
+        ))}
 
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white rounded-full p-3 z-10"
-            aria-label="Previous Slide"
-          >
-            &lt;
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white rounded-full p-3"
-            aria-label="Next Slide"
-          >
-            &gt;
-          </button>
-        </div>
-
-        <ul className="flex justify-center space-x-2 mt-[20px] mb-[20px]">
+        <ul className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
           {slides.map((_, index) => (
             <li key={index}>
               <button
                 onClick={() => setActiveSlide(index)}
-                className={`w-4 h-4 rounded-full ${
-                  index === activeSlide ? 'bg-gray-800' : 'bg-gray-400'
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === activeSlide
+                    ? 'bg-green-700 scale-110'
+                    : 'bg-gray-800 opacity-70'
                 }`}
               ></button>
             </li>

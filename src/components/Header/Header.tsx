@@ -5,6 +5,7 @@ import PCGnb from './PCGnb';
 import MobileGnb from './MobileGnb';
 import MobileToggleButton from './MobileToggleButton';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -48,14 +49,21 @@ function Header() {
         isMobileOpen
           ? 'bg-gray-100'
           : isHeaderDropdownOpen
-            ? 'bg-[#41ad02] h-[300px]'
-            : 'bg-[#ffffff] h-[90px]'
+            ? 'bg-green-900 h-[300px]'
+            : 'bg-green-900 h-[90px]'
       }`}
     >
       <div className="w-full px-[130px] header-inner flex justify-between items-center h-[90px]">
-        <button className="text-black font-bold text-[22px]">
+        <button className="flex items-center text-white font-bold text-[22px] space-x-2">
+          <Image
+            src="/header-image/tomato.png"
+            alt="땅의사람들 로고"
+            width={50}
+            height={50}
+          />
           <Link href={'/'}>땅의사람들</Link>
         </button>
+
         <PCGnb
           openMenuIndex={openMenuIndex}
           setOpenMenuIndex={setOpenMenuIndex}

@@ -55,13 +55,15 @@ function Header() {
     >
       <div className="w-full px-[130px] header-inner flex justify-between items-center h-[90px]">
         <button className="flex items-center text-white font-bold text-[22px] space-x-2">
-          <Image
-            src="/header-image/tomato.png"
-            alt="땅의사람들 로고"
-            width={50}
-            height={50}
-          />
-          <Link href={'/'}>땅의사람들</Link>
+          <Link href={'/'} className="flex items-center">
+            <Image
+              src="/header-image/tomato.png"
+              alt="땅의사람들 로고"
+              width={50}
+              height={50}
+            />
+            땅의사람들
+          </Link>
         </button>
 
         <PCGnb

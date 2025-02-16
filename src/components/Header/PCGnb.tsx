@@ -9,7 +9,7 @@ interface PCGnbProps {
 function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
   return (
     <nav className="hidden md:block">
-      <ul className="header-gnb flex space-x-8 text-black">
+      <ul className="header-gnb flex space-x-8 text-white">
         {MENU_DATA.map((menuData, index) => (
           <li
             key={index}
@@ -35,7 +35,7 @@ function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
                   <li key={subIndex}>
                     <Link
                       href={submenu.link}
-                      className="depth-2-link block px-2 py-2 text-gray-800 hover:text-white"
+                      className="depth-2-link block px-2 py-2 text-white hover:text-red-500"
                     >
                       {submenu.name}
                     </Link>

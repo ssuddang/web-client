@@ -10,20 +10,27 @@ import Image from 'next/image';
 function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
-  const isHeaderDropdownOpen = openMenuIndex !== null;
+  const threshold = 200;
 
   useEffect(() => {
-    if (!isMobileOpen) return;
-    const handleResize = () => {
-      if (window.innerWidth > 1024) {
-        setIsMobileOpen(false);
-        setOpenMenuIndex(null);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > threshold && currentScrollY > lastScrollY) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
       }
+
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMobileOpen]);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
     setIsMobileOpen((prev) => {
@@ -33,6 +40,7 @@ function Header() {
       return !prev;
     });
   };
+
   const handleMobileAccordion = (index: number) => {
     setOpenMenuIndex((prev) => (prev === index ? null : index));
   };
@@ -45,15 +53,15 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className={`w-full fixed top-0 left-0 z-50 border-b border-[#41ad02] transition-all duration-500 text-black ${
+      className={`w-full fixed top-0 left-0 z-50 border-b border-[#41ad02] transition-transform duration-300 text-black ${
         isMobileOpen
           ? 'bg-gray-100'
-          : isHeaderDropdownOpen
-            ? 'bg-green-900 h-[300px]'
-            : 'bg-green-900 h-[90px]'
-      }`}
+          : openMenuIndex !== null
+            ? 'bg-green-900 h-[250px]'
+            : 'bg-green-900 h-[70px]'
+      } ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
-      <div className="w-full px-[130px] header-inner flex justify-between items-center h-[90px]">
+      <div className="w-full px-[130px] header-inner flex justify-between items-center h-[70px]">
         <button className="flex items-center text-white font-bold text-[22px] space-x-2">
           <Link href={'/'} className="flex items-center">
             <Image

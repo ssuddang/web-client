@@ -13,7 +13,7 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data: _, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -59,13 +59,13 @@ export default function LoginPage() {
               required
             />
           </div>
+          <button
+            type="submit"
+            className="w-full py-2 mt-[50px] bg-green-700 text-white rounded hover:bg-green-800 transition"
+          >
+            로그인
+          </button>
         </form>
-        <button
-          type="submit"
-          className="w-full py-2 mt-[50px] bg-green-700 text-white rounded hover:bg-green-800 transition"
-        >
-          로그인
-        </button>
       </div>
     </div>
   );

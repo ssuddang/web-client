@@ -8,7 +8,7 @@ interface PCGnbProps {
 
 function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
   return (
-    <nav className="hidden md:block">
+    <nav className="hidden md:flex items-center space-x-6">
       <ul className="header-gnb flex text-white">
         {MENU_DATA.map((menuData, index) => (
           <li key={index} className="relative">
@@ -52,6 +52,14 @@ function PCGnb({ openMenuIndex, setOpenMenuIndex }: PCGnbProps) {
           </li>
         ))}
       </ul>
+
+      {/* ✅ 로그인 버튼 추가 */}
+      <Link
+        href="/login"
+        className="ml-4 px-4 py-2 bg-white text-green-700 font-semibold rounded hover:bg-gray-200 transition"
+      >
+        LOGIN
+      </Link>
     </nav>
   );
 }

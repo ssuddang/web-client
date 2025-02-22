@@ -20,9 +20,9 @@ function Header() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > threshold && currentScrollY > lastScrollY) {
-        setIsHeaderVisible(false);
+        setIsHeaderVisible(false); // 스크롤 내릴 때 헤더 숨김
       } else {
-        setIsHeaderVisible(true);
+        setIsHeaderVisible(true); // 스크롤 올릴 때 헤더 표시
       }
 
       setLastScrollY(currentScrollY);
@@ -53,7 +53,7 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className={`w-full fixed top-0 left-0 z-50 border-b border-[#41ad02] transition-transform duration-300 text-black ${
+      className={`w-full fixed top-0 left-0 z-50 border-b border-[#41ad02] transition-transform duration-500 ease-in-out text-black ${
         isMobileOpen
           ? 'bg-gray-100'
           : openMenuIndex !== null

@@ -20,11 +20,8 @@ function Slide() {
   }, []);
 
   return (
-    <main className="relative flex items-center justify-center">
-      <div
-        className="relative w-screen min-h-[calc(100vh-90px)] overflow-hidden flex flex-col justify-end"
-        style={{ height: 'calc(100vh - 90px)' }}
-      >
+    <main className="flex items-center justify-center">
+      <div className="w-screen h-screen overflow-hidden flex flex-col justify-end top-0">
         {slides.map((slide, index) => (
           <div
             key={index}

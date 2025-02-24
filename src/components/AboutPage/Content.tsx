@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 function Content() {
   return (
     <div className="flex flex-col items-center">
@@ -28,7 +30,13 @@ function Content() {
           생활을 만들어 보세요! 🌱
         </div>
       </div>
-      <img src="/about-image/개강총회.jpg" className="w-[600px] mt-[60px]" />
+      <Image
+        src="/about-image/개강총회.jpg"
+        alt="땅의사람들 개강총회"
+        className="mt-[60px]"
+        width={600}
+        height={400}
+      />
       <div className="text-[17px] mt-[15px] mb-[60px] font-semibold">
         - 땅의사람들 개강총회 -
       </div>
@@ -38,23 +46,32 @@ function Content() {
         </div>
         <div className="flex justify-center gap-[22px]">
           <div className="flex flex-col items-center font-semibold">
-            <img
+            <Image
               src="/about-image/학생회관.jpg"
+              alt="학생회관"
               className="w-[280px] h-[200px] mb-[20px] rounded-lg"
+              width={280}
+              height={200}
             />
             - 학생회관 -
           </div>
           <div className="flex flex-col items-center font-semibold">
-            <img
+            <Image
               src="/about-image/동아리방외.jpg"
+              alt="동아리방외"
               className="w-[280px] h-[200px] mb-[20px] rounded-lg"
+              width={280}
+              height={200}
             />
             - 동아리방 232호 -
           </div>
           <div className="flex flex-col items-center font-semibold">
-            <img
+            <Image
               src="/about-image/동아리방내.jpg"
+              alt="동아리방내"
               className="w-[280px] h-[200px] mb-[20px] rounded-lg"
+              width={280}
+              height={200}
             />
             - 동아리방 내부 -
           </div>

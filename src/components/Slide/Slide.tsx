@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 function Slide() {
@@ -13,7 +14,7 @@ function Slide() {
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
@@ -32,10 +33,11 @@ function Slide() {
           >
             <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-2000"></div>
 
-            <img
+            <Image
               src={slide}
               alt={`Slide ${index}`}
               className="w-full h-full object-cover filter blur-sm"
+              fill
             />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center">

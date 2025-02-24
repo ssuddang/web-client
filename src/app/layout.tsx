@@ -6,7 +6,7 @@ import Header from '@/components/Header/Header';
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>
+      <body className="min-w-[1024px]">
         <Header />
         <main>{children}</main>
         <Footer />

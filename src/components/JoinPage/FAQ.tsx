@@ -2,7 +2,7 @@ function FAQ() {
   return (
     <div className="mt-[100px] flex flex-col items-center">
       <div className="font-bold text-[25px]">FAQ</div>
-      <div className="mt-[25px] mb-[70px] w-[1000px]">
+      <div className="mt-[25px] mb-[50px] w-[1000px]">
         <div className="text-white">
           <div className="bg-green-700 my-[15px] px-[70px] py-[20px] rounded-2xl">
             <div className="mb-[10px] font-semibold">
@@ -30,6 +30,11 @@ function FAQ() {
           </div>
         </div>
       </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSQPqUnG4wOO2GWkyrgCAJ9IiK2y8aSx1WwzpZpK5HGYL-xg/viewform">
+        <button className="bg-red-600 text-white px-5 py-3 rounded-3xl mb-[70px]">
+          지원하기
+        </button>
+      </a>
     </div>
   );
 }

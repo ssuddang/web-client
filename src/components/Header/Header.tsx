@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import MENU_DATA from './menuData';
+import { supabase } from '@/lib/supabase';
 
 function Header() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
@@ -11,6 +11,33 @@ function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
   const threshold = 200;
+  const [user, setUser] = useState<any>(null);
+  // 로그인 여부 확인
+  useEffect(() => {
+    const getUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data?.user);
+    };
+
+    getUser();
+
+    // 로그인 상태 변화 감지
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (_event, session) => {
+        setUser(session?.user || null);
+      },
+    );
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  // 로그아웃 처리
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,16 +69,10 @@ function Header() {
       <div className="w-full px-[130px] flex justify-between items-center h-[70px]">
         <button className="flex items-center text-white font-bold text-[22px] space-x-2">
           <Link href={'/'} className="flex items-center">
-            <Image
-              src="/header-image/tomato.png"
-              alt="땅의사람들 로고"
-              width={50}
-              height={50}
-            />
             땅의사람들
           </Link>
         </button>
-        <nav>
+        <nav className="flex items-center space-x-6">
           <ul className="header-gnb flex text-white">
             {MENU_DATA.map((menuData, index) => (
               <li key={index} className="relative">
@@ -93,6 +114,22 @@ function Header() {
               </li>
             ))}
           </ul>
+          {/* ✅ 로그인 상태에 따라 버튼 변경 */}
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="ml-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition"
+            >
+              LOGOUT
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className="ml-4 px-4 py-2 bg-white text-green-700 font-semibold rounded hover:bg-gray-200 transition"
+            >
+              LOGIN
+            </Link>
+          )}
         </nav>
       </div>
     </header>

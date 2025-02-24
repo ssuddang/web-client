@@ -1,4 +1,4 @@
-import Content from '@/components/JoinPage/Content';
+// import Content from '@/components/JoinPage/Content';
 import FAQ from '@/components/JoinPage/FAQ';
 import Poster from '@/components/JoinPage/Poster';
 import Schedule from '@/components/JoinPage/Schedule';
@@ -8,7 +8,7 @@ function JoinPage() {
   return (
     <div>
       <Title />
-      <Content />
+      {/* <Content /> */}
       <Poster />
       <Schedule />
       <FAQ />

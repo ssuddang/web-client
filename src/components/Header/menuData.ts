@@ -11,7 +11,6 @@ const MENU_DATA = [
     submenus: [
       { name: '공지사항', link: '/notice' },
       { name: '캘린더', link: '/calendar' },
-      { name: '주요 활동', link: '/activities' },
     ],
   },
   {

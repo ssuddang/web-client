@@ -35,7 +35,7 @@ function Slide() {
             <img
               src={slide}
               alt={`Slide ${index}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover filter blur-sm"
             />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center">

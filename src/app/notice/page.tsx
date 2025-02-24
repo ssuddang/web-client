@@ -16,27 +16,26 @@ export default function NoticePage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [isEditing, setIsEditing] = useState<number | null>(null);
-  const [userRole, setUserRole] = useState<string | null>(null);
+  const [user, setUser] = useState<any>(null); // ✅ 로그인한 사용자 정보 저장
 
   useEffect(() => {
     fetchNotices();
-    checkUserRole();
+    checkUserLogin();
   }, []);
 
-  // ✅ 현재 로그인한 사용자의 역할(Role) 확인
-  const checkUserRole = async () => {
+  // ✅ 현재 로그인한 사용자인지 확인
+  const checkUserLogin = async () => {
     const {
       data: { user },
+      error,
     } = await supabase.auth.getUser();
-    if (user) {
-      const { data, error } = await supabase
-        .from('users')
-        .select('role')
-        .eq('id', user.id)
-        .single();
-      if (error) console.error('사용자 정보 불러오기 오류:', error);
-      else setUserRole(data?.role || 'user');
+
+    if (error) {
+      console.error('사용자 정보 가져오기 오류:', error.message);
+      return;
     }
+
+    setUser(user); // 로그인한 사용자 저장
   };
 
   // ✅ 공지사항 불러오기 (Read)
@@ -45,37 +44,44 @@ export default function NoticePage() {
       .from('notices')
       .select('*')
       .order('created_at', { ascending: false });
-    if (error) console.error('공지사항 불러오기 오류:', error);
+
+    if (error) console.error('공지사항 불러오기 오류:', error.message);
     else setNotices(data || []);
   };
 
-  // ✅ 공지사항 추가 (Create) (관리자만 가능)
+  // ✅ 공지사항 추가 (Create) (로그인한 사용자만 가능)
   const addNotice = async () => {
     if (!title || !content) return alert('제목과 내용을 입력하세요.');
-    if (userRole !== 'admin')
-      return alert('관리자만 공지사항을 추가할 수 있습니다.');
+    if (!user) return alert('로그인해야 공지사항을 추가할 수 있습니다.');
 
     const { error } = await supabase
       .from('notices')
       .insert([{ title, content }]);
-    if (error) console.error('공지사항 추가 오류:', error);
+
+    if (error) {
+      console.error('공지사항 추가 오류:', error.message);
+      return;
+    }
 
     setTitle('');
     setContent('');
     fetchNotices();
   };
 
-  // ✅ 공지사항 수정 (Update) (관리자만 가능)
+  // ✅ 공지사항 수정 (Update) (로그인한 사용자만 가능)
   const updateNotice = async (id: number) => {
     if (!title || !content) return alert('제목과 내용을 입력하세요.');
-    if (userRole !== 'admin')
-      return alert('관리자만 공지사항을 수정할 수 있습니다.');
+    if (!user) return alert('로그인해야 공지사항을 수정할 수 있습니다.');
 
     const { error } = await supabase
       .from('notices')
       .update({ title, content })
       .eq('id', id);
-    if (error) console.error('공지사항 수정 오류:', error);
+
+    if (error) {
+      console.error('공지사항 수정 오류:', error.message);
+      return;
+    }
 
     setIsEditing(null);
     setTitle('');
@@ -83,13 +89,16 @@ export default function NoticePage() {
     fetchNotices();
   };
 
-  // ✅ 공지사항 삭제 (Delete) (관리자만 가능)
+  // ✅ 공지사항 삭제 (Delete) (로그인한 사용자만 가능)
   const deleteNotice = async (id: number) => {
-    if (userRole !== 'admin')
-      return alert('관리자만 공지사항을 삭제할 수 있습니다.');
+    if (!user) return alert('로그인해야 공지사항을 삭제할 수 있습니다.');
 
     const { error } = await supabase.from('notices').delete().eq('id', id);
-    if (error) console.error('공지사항 삭제 오류:', error);
+
+    if (error) {
+      console.error('공지사항 삭제 오류:', error.message);
+      return;
+    }
 
     fetchNotices();
   };
@@ -99,8 +108,9 @@ export default function NoticePage() {
       <Title />
       <div className="max-w-3xl mx-auto p-6">
         <h1 className="text-2xl font-bold mb-4">공지사항</h1>
-        {/* ✅ 관리자만 공지사항 추가 가능 */}
-        {userRole === 'admin' && (
+
+        {/* ✅ 로그인한 사용자만 공지사항 추가 가능 */}
+        {user && (
           <div className="mb-4 p-4 bg-gray-100 rounded">
             <input
               type="text"
@@ -134,7 +144,7 @@ export default function NoticePage() {
           </div>
         )}
 
-        {/* ✅ 공지사항 목록 */}
+        {/* ✅ 공지사항 목록 (모든 사용자 읽기 가능) */}
         <ul>
           {notices.map((notice) => (
             <li
@@ -149,8 +159,8 @@ export default function NoticePage() {
                 </small>
               </div>
 
-              {/* ✅ 관리자만 수정/삭제 버튼 표시 */}
-              {userRole === 'admin' && (
+              {/* ✅ 로그인한 사용자만 수정/삭제 가능 */}
+              {user && (
                 <div className="flex space-x-2">
                   <button
                     onClick={() => {

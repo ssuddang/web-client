@@ -3,7 +3,7 @@ function Footer() {
     <footer className="bg-green-900 text-white flex flex-col">
       <div className="flex items-center justify-between w-full px-[130px] mx-auto mt-[40px] mb-[10px]">
         <div className="text-[13px] font-thin">
-          Copyright ⓒ SSUDDANG All Rights Reserved.
+          Copyright ⓒ 땅의사람들 All Rights Reserved.
         </div>
         <a href="https://www.instagram.com/ssu_ddang4/" className="w-7 h-7">
           <img src="/icon/icon-instagram.png" />
@@ -23,7 +23,7 @@ function Footer() {
 
           <div>
             <div className="text-[15px] font-extrabold">회장</div>
-            <div>정휘도 010-0000-0000</div>
+            <div>정휘도 010-2551-2861</div>
           </div>
         </div>
         <div className="flex items-end justify-between mx-auto w-full px-[130px] mb-[30px]">
@@ -31,7 +31,7 @@ function Footer() {
           <div>
             <div className="text-[15px] font-extrabold">부회장</div>
             <div>
-              김민석 010-0000-0000
+              김민석 010-3958-0319
               <br />
               전상하 010-0000-0000
             </div>

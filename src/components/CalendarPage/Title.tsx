@@ -13,7 +13,7 @@ function Title() {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="absolute flex flex-col items-center justify-center h-[200px] text-white">
-        <div className="text-4xl font-bold mb-2">캘린더</div>
+        <div className="text-2xl lg:text-4xl font-bold mb-2">캘린더</div>
         <div className="mt-2">
           땅의사람들의 일정을 확인할 수 있는 캘린더입니다.
         </div>

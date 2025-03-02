@@ -16,7 +16,7 @@ function Title() {
 
       {/* 텍스트 박스 */}
       <div className="absolute flex flex-col items-center justify-center h-[200px] text-white">
-        <div className="text-4xl font-bold mb-2">지원하기</div>
+        <div className="text-2xl lg:text-4xl font-bold mb-2">지원하기</div>
         <div className="mt-2">
           땅의사람들에 가입하고 싶으신가요? 언제나 환영입니다.
         </div>

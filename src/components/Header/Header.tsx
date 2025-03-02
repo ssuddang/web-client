@@ -1,18 +1,19 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import MENU_DATA from './menuData';
 import { supabase } from '@/lib/supabase';
 import PC from './PC';
+import Mobile from './Mobile';
 
 function Header() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const threshold = 200;
   const [user, setUser] = useState<any>(null);
+
   // 로그인 여부 확인
   useEffect(() => {
     const getUser = async () => {
@@ -41,21 +42,33 @@ function Header() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > threshold && currentScrollY > lastScrollY) {
-        setIsHeaderVisible(false);
-      } else {
-        setIsHeaderVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1024);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > threshold && currentScrollY > lastScrollY) {
+          setIsHeaderVisible(false);
+        } else {
+          setIsHeaderVisible(true);
+        }
+
+        setLastScrollY(currentScrollY);
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [lastScrollY, isMobile]);
 
   return (
     <header
@@ -64,16 +77,20 @@ function Header() {
         openMenuIndex === null
           ? 'bg-green-900 h-[70px]'
           : 'bg-green-900 h-[250px]'
-      } ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      } ${!isMobile && !isHeaderVisible ? '-translate-y-full' : 'translate-y-0'}`}
       onMouseLeave={() => setOpenMenuIndex(null)}
     >
-      <div className="w-full px-[130px] flex justify-between items-center h-[70px]">
-        <PC
-          user={user}
-          handleLogout={handleLogout}
-          openMenuIndex={openMenuIndex}
-          setOpenMenuIndex={setOpenMenuIndex}
-        />
+      <div className="w-full px-[20px] lg:px-[130px] flex justify-between items-center h-[70px]">
+        {isMobile ? (
+          <Mobile user={user} handleLogout={handleLogout} />
+        ) : (
+          <PC
+            user={user}
+            handleLogout={handleLogout}
+            openMenuIndex={openMenuIndex}
+            setOpenMenuIndex={setOpenMenuIndex}
+          />
+        )}
       </div>
     </header>
   );

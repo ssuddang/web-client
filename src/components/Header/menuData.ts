@@ -1,4 +1,9 @@
-const MENU_DATA = [
+type MenuItem = {
+  menu: string;
+  submenus: { name: string; link: string }[];
+};
+
+const MENU_DATA: MenuItem[] = [
   {
     menu: 'About Us',
     submenus: [

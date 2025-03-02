@@ -13,7 +13,7 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { data: error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -23,7 +23,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push('/');
+    router.push('/'); // ✅ 로그인 성공 시 홈으로 이동
   };
 
   return (

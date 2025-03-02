@@ -40,14 +40,14 @@ function Slide() {
               fill
             />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="text-white text-[55px] font-extrabold">
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-[20px]">
+              <div className="text-white text-[35px] font-extrabold md:text-[55px]">
                 Soongsil University
               </div>
-              <div className="text-white text-[55px] font-extrabold">
+              <div className="text-white text-[35px] font-extrabold md:text-[55px]">
                 People of the Land
               </div>
-              <div className="text-white text-[20px] font-medium mt-[20px]">
+              <div className="text-white text-[15px] md:text-[20px] font-medium mt-[20px]">
                 숭실대학교 중앙 농촌활동 동아리 땅의사람들
               </div>
             </div>

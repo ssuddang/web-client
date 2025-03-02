@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import MENU_DATA from './menuData';
 import { supabase } from '@/lib/supabase';
+import { User } from '@supabase/auth-js';
 
 function Header() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
@@ -11,7 +12,7 @@ function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
   const threshold = 200;
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   // 로그인 여부 확인
   useEffect(() => {
     const getUser = async () => {

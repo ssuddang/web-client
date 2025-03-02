@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import Title from '@/components/NoticePage/Title';
+import { User } from '@supabase/auth-js';
 
 interface Notice {
   id: number;
@@ -18,7 +19,7 @@ export default function NoticePage() {
   const [showEditForm, setShowEditForm] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     fetchNotices();

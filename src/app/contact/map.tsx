@@ -8,7 +8,7 @@ const KakaoMap: React.FC = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=66cc0136b4d40cb1d456a0a603bc61c4&autoload=false";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=4265eccb93442e854bf5cb40696c1b82&autoload=false";
     script.async = true;
 
     script.onload = () => {

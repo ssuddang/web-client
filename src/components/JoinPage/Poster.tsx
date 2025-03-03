@@ -13,7 +13,7 @@ function Poster() {
       <div className="flex flex-col justify-center items-center">
         <Image
           src="/join-image/recruit2025-1.jpg"
-          className="w-[500px] h-[500px] mt-[30px] mb-[10px]"
+          className="lg:w-[500px] lg:h-[500px] mt-[30px] mb-[10px] px-[20px]"
           alt="지원 포스터"
           width={500}
           height={500}

@@ -3,8 +3,10 @@ import Image from 'next/image';
 function Content() {
   return (
     <div className="flex flex-col items-center mx-[20px]">
-      <div className="text-[30px] font-bold mt-[50px]">인사말</div>
-      <div className="text-[30px] font-bold mt-[35px] mb-[50px]">
+      <div className="lg:text-[30px] text-[25px] font-bold mt-[50px]">
+        인사말
+      </div>
+      <div className="lg:text-[30px] text-[25px] font-bold mt-[35px] mb-[50px]">
         Serve, Share, Support!
       </div>
       <div className="lg:w-[930px] flex flex-col justify-center text-[17px] gap-[30px] leading-loose">

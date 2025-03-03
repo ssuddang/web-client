@@ -14,7 +14,9 @@ function Title() {
 
       <div className="absolute flex flex-col items-center justify-center h-[200px] text-white">
         <div className="text-2xl lg:text-4xl font-bold mb-2">소개</div>
-        <div className="mt-2">땅의사람들에 대해 소개합니다.</div>
+        <div className="mt-2 lg:text-[16px] text-[13px]">
+          땅의사람들에 대해 소개합니다.
+        </div>
       </div>
     </div>
   );

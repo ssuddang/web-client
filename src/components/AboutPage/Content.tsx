@@ -2,12 +2,14 @@ import Image from 'next/image';
 
 function Content() {
   return (
-    <div className="flex flex-col items-center">
-      <div className="text-[30px] font-bold mt-[50px]">인사말</div>
-      <div className="text-[30px] font-bold mt-[35px] mb-[50px]">
+    <div className="flex flex-col items-center mx-[20px]">
+      <div className="lg:text-[30px] text-[25px] font-bold mt-[50px]">
+        인사말
+      </div>
+      <div className="lg:text-[30px] text-[25px] font-bold mt-[35px] mb-[50px]">
         Serve, Share, Support!
       </div>
-      <div className="w-[930px] flex flex-col justify-center text-[17px] gap-[30px] leading-loose">
+      <div className="lg:w-[930px] flex flex-col justify-center text-[17px] gap-[30px] leading-loose">
         <div>
           숭실대학교 중앙 농촌 활동 동아리 땅의사람들은 농촌에서 어르신들을
           도와드리고, 농촌 사회에 젊음과 활력을 불어넣는 교내 유일의 농촌 활동
@@ -33,23 +35,23 @@ function Content() {
       <Image
         src="/about-image/개강총회.jpg"
         alt="땅의사람들 개강총회"
-        className="mt-[60px]"
+        className="mt-[60px] mx-[20px]"
         width={600}
         height={400}
       />
       <div className="text-[17px] mt-[15px] mb-[60px] font-semibold">
         - 땅의사람들 개강총회 -
       </div>
-      <div className="w-[930px] h-[330px] bg-gray-200 rounded-lg mb-[80px]">
-        <div className="mt-[20px] mb-[15px] ml-[20px] font-bold text-[20px]">
+      <div className="mx-[20px] w-full px-[20px] lg:w-[930px] lg:h-[330px] bg-gray-200 rounded-lg mb-[80px] pb-[20px]">
+        <div className="mt-[20px] mb-[15px] font-bold text-[20px]">
           둘러보기
         </div>
-        <div className="flex justify-center gap-[22px]">
+        <div className="flex flex-col lg:flex-row justify-center gap-[22px]">
           <div className="flex flex-col items-center font-semibold">
             <Image
               src="/about-image/학생회관.jpg"
               alt="학생회관"
-              className="w-[280px] h-[200px] mb-[20px] rounded-lg"
+              className="w-full lg:w-[280px] lg:h-[200px] mb-[20px] rounded-lg"
               width={280}
               height={200}
             />
@@ -59,7 +61,7 @@ function Content() {
             <Image
               src="/about-image/동아리방외.jpg"
               alt="동아리방외"
-              className="w-[280px] h-[200px] mb-[20px] rounded-lg"
+              className="w-full lg:w-[280px] lg:h-[200px] mb-[20px] rounded-lg"
               width={280}
               height={200}
             />
@@ -69,7 +71,7 @@ function Content() {
             <Image
               src="/about-image/동아리방내.jpg"
               alt="동아리방내"
-              className="w-[280px] h-[200px] mb-[20px] rounded-lg"
+              className="w-full lg:w-[280px] lg:h-[200px] mb-[20px] rounded-lg"
               width={280}
               height={200}
             />

@@ -14,7 +14,8 @@ export const metadata = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="min-w-[1024px]">
+      <body className="">
+        {/* min-w-[1024px] */}
         <Header />
         <main>{children}</main>
         <Footer />

@@ -2,8 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
+
 import PC from './PC';
 import Mobile from './Mobile';
+
+import { User } from '@supabase/auth-js';
+
 
 function Header() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
@@ -12,9 +16,8 @@ function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const threshold = 200;
-  const [user, setUser] = useState<any>(null);
-
-  // 로그인 여부 확인
+  const [user, setUser] = useState<User | null>(null);
+    
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();

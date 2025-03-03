@@ -141,10 +141,10 @@ export default function NoticePage() {
     <div>
       <Title />
       <div className="max-w-3xl mx-auto p-6 mb-[100px] h-full">
-        <div className="flex justify-between px-[30px] font-bold text-[20px] mb-[10px] mt-[15px]">
-          <div>No.</div>
+        <div className="flex lg:justify-between px-[30px] font-bold text-[20px] mb-[10px] mt-[15px]">
+          <div className="pr-[40px] lg:pr-0">No.</div>
           <div>제목</div>
-          <div>작성일</div>
+          <div className="hidden lg:block">작성일</div>
         </div>
         <hr className="w-full border-t border-black" />
 
@@ -156,10 +156,12 @@ export default function NoticePage() {
                 className="py-4 border-b cursor-pointer hover:bg-gray-100"
                 onClick={() => handleSelectNotice(notice)}
               >
-                <div className="flex justify-between pl-[40px] pr-[25px]">
-                  <span className="font-bold">{index + 1}</span>
+                <div className="flex lg:justify-between pl-[40px] pr-[25px]">
+                  <span className="font-bold pr-[50px] lg:pr-0">
+                    {index + 1}
+                  </span>
                   <span>{notice.title}</span>
-                  <small className="text-gray-500">
+                  <small className="text-gray-500 hidden lg:block">
                     {new Date(notice.created_at).toLocaleDateString()}
                   </small>
                 </div>

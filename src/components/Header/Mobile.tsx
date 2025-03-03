@@ -3,7 +3,17 @@ import Link from 'next/link';
 import MENU_DATA from './menuData';
 import { Bars4Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-function Mobile({ user, handleLogout }: any) {
+interface User {
+  id: string;
+  email: string;
+}
+
+interface MobileProps {
+  user: User | null;
+  handleLogout: () => void;
+}
+
+function Mobile({ user, handleLogout }: MobileProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
 

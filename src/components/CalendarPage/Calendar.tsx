@@ -30,8 +30,8 @@ function Calendar() {
   const days = eachDayOfInterval({ start: startDate, end: endDate });
 
   return (
-    <div className="p-4 w-[900px] mx-auto bg-white mt-[30px] mb-[50px]">
-      <div className="flex justify-between items-center mb-10 mx-[300px]">
+    <div className="p-4 lg:w-[900px] mx-auto bg-white mt-[30px] mb-[50px]">
+      <div className="flex justify-between items-center mb-10 w-[250px] mx-auto">
         <button onClick={prevMonth} className="px-2 py-1">
           ◀
         </button>

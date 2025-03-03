@@ -7,7 +7,7 @@ function ContactPage() {
   return (
     <div>
       <Title />
-      <div className="max-w-4xl mx-auto">
+      <div className="mx-[20px] lg:max-w-4xl lg:mx-auto">
         <div className="flex justify-center">
           <div className="text-2xl font-semibold mt-10">지도</div>
         </div>

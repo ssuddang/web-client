@@ -17,7 +17,7 @@ function Slide() {
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <main className="flex items-center justify-center">

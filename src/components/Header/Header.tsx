@@ -8,6 +8,10 @@ import Mobile from './Mobile';
 
 import { User } from '@supabase/auth-js';
 
+interface SupabaseUser extends User {
+  email: string;
+}
+
 function Header() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -15,19 +19,31 @@ function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const threshold = 200;
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
 
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
-      setUser(data?.user);
+      if (data?.user) {
+        setUser({
+          ...data.user,
+          email: data.user.email ?? '',
+        });
+      }
     };
 
     getUser();
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
-        setUser(session?.user || null);
+        if (session?.user) {
+          setUser({
+            ...session.user,
+            email: session.user.email ?? '',
+          });
+        } else {
+          setUser(null);
+        }
       },
     );
 

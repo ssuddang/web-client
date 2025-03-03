@@ -11,13 +11,14 @@ function Slide() {
     '/slide-image/image4.jpg',
   ];
 
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % slides.length);
-  };
   useEffect(() => {
+    const nextSlide = () => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    };
+
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, [nextSlide]);
+  }, []);
 
   return (
     <main className="flex items-center justify-center">

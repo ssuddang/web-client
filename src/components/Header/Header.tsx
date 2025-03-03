@@ -8,7 +8,6 @@ import Mobile from './Mobile';
 
 import { User } from '@supabase/auth-js';
 
-
 function Header() {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -17,7 +16,7 @@ function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
   const threshold = 200;
   const [user, setUser] = useState<User | null>(null);
-    
+
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
@@ -26,7 +25,6 @@ function Header() {
 
     getUser();
 
-    // 로그인 상태 변화 감지
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
         setUser(session?.user || null);
@@ -38,7 +36,6 @@ function Header() {
     };
   }, []);
 
-  // 로그아웃 처리
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);

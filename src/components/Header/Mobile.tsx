@@ -13,14 +13,10 @@ function Mobile({ user, handleLogout }: any) {
 
   return (
     <div className="w-full">
-      {/* ✅ 로고 & 햄버거 버튼을 같은 줄에 정렬 */}
       <div className="flex justify-between items-center bg-green-900">
-        {/* 로고 */}
         <Link href={'/'} className="text-white font-bold text-[22px]">
           땅의사람들
         </Link>
-
-        {/* ✅ 햄버거 버튼 우측 정렬 */}
         <button
           className="text-white p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -29,20 +25,23 @@ function Mobile({ user, handleLogout }: any) {
         </button>
       </div>
 
-      {/* ✅ 모바일 메뉴 (오른쪽에서 슬라이드) */}
+      {isMenuOpen && (
+        <div
+          className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50 transition-opacity duration-300"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+
       <nav
         className={`fixed top-0 right-0 w-[70%] h-screen bg-green-950 transition-transform duration-300 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* 닫기 버튼 */}
         <div className="flex justify-end p-4">
           <button className="text-white" onClick={() => setIsMenuOpen(false)}>
             <XMarkIcon className="w-8 h-8" />
           </button>
         </div>
-
-        {/* 메뉴 리스트 */}
         <ul className="text-center text-white mt-[30px]">
           {MENU_DATA.map((menuData, index) => (
             <li key={index}>
@@ -54,8 +53,6 @@ function Mobile({ user, handleLogout }: any) {
               >
                 {menuData.menu}
               </button>
-
-              {/* 서브 메뉴 */}
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out bg-green-900 font-semibold ${
                   activeMenu === index
@@ -85,8 +82,6 @@ function Mobile({ user, handleLogout }: any) {
             </li>
           ))}
         </ul>
-
-        {/* 로그인 / 로그아웃 버튼 */}
         <div className="text-center mt-[100px]">
           {user ? (
             <button

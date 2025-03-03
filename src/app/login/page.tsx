@@ -23,7 +23,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push('/'); // ✅ 로그인 성공 시 홈으로 이동
+    router.push('/');
   };
 
   return (

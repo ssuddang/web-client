@@ -148,8 +148,6 @@ export default function NoticePage() {
           <div className="hidden lg:block">작성일</div>
         </div>
         <hr className="w-full border-t border-black" />
-
-        {/* ✅ 공지사항 목록 */}
         <ul>
           {notices.map((notice, index) => (
             <div key={notice.id}>
@@ -167,8 +165,6 @@ export default function NoticePage() {
                   </small>
                 </div>
               </li>
-
-              {/* ✅ 선택된 공지사항이 현재 notice와 동일할 경우 해당 위치에 상세 내용 표시 */}
               {selectedNotice?.id === notice.id && (
                 <div className="p-6 bg-gray-50 border-b">
                   <p className="text-gray-700 mb-[20px]">
@@ -200,7 +196,6 @@ export default function NoticePage() {
           ))}
         </ul>
 
-        {/* ✅ 공지사항 작성 버튼 */}
         {user && !showForm && (
           <div className="flex justify-end mt-6">
             <button
@@ -212,7 +207,6 @@ export default function NoticePage() {
           </div>
         )}
 
-        {/* ✅ 모달 컴포넌트 */}
         {(showForm || showEditForm) && (
           <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-6 rounded-lg w-[800px] h-[500px]">

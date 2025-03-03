@@ -51,7 +51,6 @@ function PC({ user, handleLogout, openMenuIndex, setOpenMenuIndex }: any) {
             </li>
           ))}
         </ul>
-        {/* ✅ 로그인 상태에 따라 버튼 변경 */}
         {user ? (
           <button
             onClick={handleLogout}

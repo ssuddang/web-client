@@ -14,7 +14,6 @@ function Slide() {
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);

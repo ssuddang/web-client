@@ -3,9 +3,9 @@ import Image from 'next/image';
 function Poster() {
   return (
     <div>
-      <div className="flex w-full items-center px-[130px]">
+      <div className="flex w-full items-center lg:px-[130px] px-[20px]">
         <hr className="w-full border-t border-black" />
-        <div className="flex justify-center w-[300px] font-semibold">
+        <div className="flex justify-center lg:w-[300px] w-[400px] font-semibold">
           이전 모집 공고
         </div>
         <hr className="w-full border-t border-black" />

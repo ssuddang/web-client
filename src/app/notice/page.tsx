@@ -54,7 +54,7 @@ export default function NoticePage() {
     const { data, error } = await supabase
       .from('notices')
       .select('*')
-      .order('created_at', { ascending: true });
+      .order('created_at', { ascending: false });
 
     if (error) {
       console.error('공지사항 불러오기 오류:', error.message);
@@ -157,7 +157,7 @@ export default function NoticePage() {
               >
                 <div className="flex lg:justify-between pl-[40px] pr-[25px]">
                   <span className="font-bold pr-[50px] lg:pr-0">
-                    {index + 1}
+                    {notices.length - index}
                   </span>
                   <span>{notice.title}</span>
                   <small className="text-gray-500 hidden lg:block">
@@ -168,7 +168,12 @@ export default function NoticePage() {
               {selectedNotice?.id === notice.id && (
                 <div className="p-6 bg-gray-50 border-b">
                   <p className="text-gray-700 mb-[20px]">
-                    {selectedNotice.content}
+                    {selectedNotice.content.split('\n').map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
                   </p>
                   <small className="text-gray-500">
                     {new Date(selectedNotice.created_at).toLocaleString()}

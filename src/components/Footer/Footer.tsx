@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 function Footer() {
   return (
     <footer className="bg-green-900 text-white flex flex-col">
@@ -6,9 +8,14 @@ function Footer() {
 
         <a
           href="https://www.instagram.com/ssu_ddang4/"
-          className="w-5 h-5 flex items-center justify-center gap-1"
+          className="flex items-center justify-center gap-1"
         >
-          <img src="/icon/icon-instagram.png" />
+          <Image
+            src="/icon/icon-instagram.png"
+            width={20}
+            height={20}
+            alt="인스타그램"
+          />
         </a>
       </div>
       <div className="w-full px-[20px] lg:px-[130px]">

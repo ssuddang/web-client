@@ -11,11 +11,11 @@ function Slide() {
     '/slide-image/image4.jpg',
   ];
 
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % slides.length);
-  };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    const nextSlide = () => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    };
+
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, []);

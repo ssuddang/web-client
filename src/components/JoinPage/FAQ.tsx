@@ -37,11 +37,11 @@ function FAQ() {
           </div>
         </div>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSQPqUnG4wOO2GWkyrgCAJ9IiK2y8aSx1WwzpZpK5HGYL-xg/viewform">
+      {/* <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSQPqUnG4wOO2GWkyrgCAJ9IiK2y8aSx1WwzpZpK5HGYL-xg/viewform">
         <button className="bg-red-600 text-white px-5 py-3 rounded-3xl mb-[70px]">
           지원하기
         </button>
-      </a>
+      </a> */}
     </div>
   );
 }

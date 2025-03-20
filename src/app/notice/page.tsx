@@ -54,7 +54,7 @@ export default function NoticePage() {
     const { data, error } = await supabase
       .from('notices')
       .select('*')
-      .order('created_at', { ascending: true });
+      .order('created_at', { ascending: false });
 
     if (error) {
       console.error('공지사항 불러오기 오류:', error.message);
@@ -148,8 +148,6 @@ export default function NoticePage() {
           <div className="hidden lg:block">작성일</div>
         </div>
         <hr className="w-full border-t border-black" />
-
-        {/* ✅ 공지사항 목록 */}
         <ul>
           {notices.map((notice, index) => (
             <div key={notice.id}>
@@ -159,7 +157,7 @@ export default function NoticePage() {
               >
                 <div className="flex lg:justify-between pl-[40px] pr-[25px]">
                   <span className="font-bold pr-[50px] lg:pr-0">
-                    {index + 1}
+                    {notices.length - index}
                   </span>
                   <span>{notice.title}</span>
                   <small className="text-gray-500 hidden lg:block">
@@ -167,12 +165,15 @@ export default function NoticePage() {
                   </small>
                 </div>
               </li>
-
-              {/* ✅ 선택된 공지사항이 현재 notice와 동일할 경우 해당 위치에 상세 내용 표시 */}
               {selectedNotice?.id === notice.id && (
                 <div className="p-6 bg-gray-50 border-b">
                   <p className="text-gray-700 mb-[20px]">
-                    {selectedNotice.content}
+                    {selectedNotice.content.split('\n').map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
                   </p>
                   <small className="text-gray-500">
                     {new Date(selectedNotice.created_at).toLocaleString()}
@@ -200,7 +201,6 @@ export default function NoticePage() {
           ))}
         </ul>
 
-        {/* ✅ 공지사항 작성 버튼 */}
         {user && !showForm && (
           <div className="flex justify-end mt-6">
             <button
@@ -212,7 +212,6 @@ export default function NoticePage() {
           </div>
         )}
 
-        {/* ✅ 모달 컴포넌트 */}
         {(showForm || showEditForm) && (
           <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-6 rounded-lg w-[800px] h-[500px]">

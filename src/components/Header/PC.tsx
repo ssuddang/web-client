@@ -1,7 +1,20 @@
 import Link from 'next/link';
 import MENU_DATA from './menuData';
+import { Dispatch, SetStateAction } from 'react';
 
-function PC({ user, handleLogout, openMenuIndex, setOpenMenuIndex }: any) {
+interface User {
+  id: string;
+  email: string;
+}
+
+interface PCProps {
+  user: User | null;
+  handleLogout: () => void;
+  openMenuIndex: number | null;
+  setOpenMenuIndex: Dispatch<SetStateAction<number | null>>;
+}
+
+function PC({ user, handleLogout, openMenuIndex, setOpenMenuIndex }: PCProps) {
   return (
     <>
       <button className="flex items-center text-white font-bold text-[22px] space-x-2">
@@ -51,7 +64,6 @@ function PC({ user, handleLogout, openMenuIndex, setOpenMenuIndex }: any) {
             </li>
           ))}
         </ul>
-        {/* ✅ 로그인 상태에 따라 버튼 변경 */}
         {user ? (
           <button
             onClick={handleLogout}

@@ -17,18 +17,22 @@ function ContactPage() {
         <div>
           <div className="mt-8">
             <div>
-              <div className="text-2xl font-semibold mb-[5px]">주소</div>
-              <div className="flex flex-col">
+              <div className="lg:text-2xl font-semibold mb-[5px] text-[20px]">
+                주소
+              </div>
+              <div className="flex flex-col lg:text-[16px] text-[14px]">
                 <div>[06978]</div>
-                <div className="my-[6px]">서울특별시 동작구 상도로 369,</div>
+                <div>서울특별시 동작구 상도로 369,</div>
                 <div>숭실대학교 학생회관 232호, 땅의사람들</div>
               </div>
             </div>
 
             <div className="mt-[40px] mb-[40px]">
-              <div className="text-2xl font-semibold">문의하기</div>
-              <div className="flex flex-col">
-                <div className="my-[6px]">
+              <div className="lg:text-2xl font-semibold mb-[5px] text-[20px]">
+                문의하기
+              </div>
+              <div className="flex flex-col lg:text-[16px] text-[14px]">
+                <div>
                   땅의사람들에 문의하실 내용이 있으신 경우, 회장단에게
                   연락하시기 바랍니다.
                 </div>

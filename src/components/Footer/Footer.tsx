@@ -34,18 +34,26 @@ function Footer() {
           </div>
         </div>
         <div className="lg:space-y-3 space-y-8 mt-8 lg:mt-0">
-          <div>
-            <div className="text-[15px] font-extrabold">회장</div>
-            <div>정휘도 010-2551-2861</div>
+          <div className="bg-white/10 rounded-xl p-3">
+            <div className="text-[15px] font-extrabold">회장단</div>
+            <div className="flex gap-[38px]">
+              <div className="font-medium">회장</div>
+              <div>정휘도 010-2551-2861</div>
+            </div>
+            <div className="flex gap-[25px]">
+              <div className="font-medium">부회장</div>
+              <div>김민석 010-3958-0319</div>
+            </div>
           </div>
-          <div>
-            <div>
-              <div className="text-[15px] font-extrabold">부회장</div>
-              <div>
-                김민석 010-3958-0319
-                <br />
-                전상하 010-8214-9040
-              </div>
+          <div className="bg-white/10 rounded-xl p-3">
+            <div className="text-[15px] font-extrabold">부장단</div>
+            <div className="flex gap-[12px]">
+              <div className="font-medium">홍보부장</div>
+              <div>박경민 010-5746-6493</div>
+            </div>
+            <div className="flex gap-[12px]">
+              <div className="font-medium">문화부장</div>
+              <div>김시현 010-6671-9111</div>
             </div>
           </div>
         </div>

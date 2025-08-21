@@ -3,13 +3,6 @@ import Image from 'next/image';
 function Poster() {
   return (
     <div>
-      {/* <div className="flex w-full items-center lg:px-[130px] px-[20px]"> */}
-      {/* <hr className="w-full border-t border-black" />
-        <div className="flex justify-center lg:w-[300px] w-[400px] font-semibold">
-          이전 모집 공고
-        </div> */}
-      {/* <hr className="w-full border-t border-black" /> */}
-      {/* </div> */}
       <div className="flex flex-col justify-center items-center">
         <Image
           src="/join-image/recruit2025-2.jpg"
